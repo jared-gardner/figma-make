@@ -1,0 +1,200 @@
+{
+  "$description": "BambooHR design tokens — extracted from live app (humaninterst.bamboohr.com) via DevTools. Design system: Fabric.",
+  "$updated": "2026-02-21",
+
+  "color": {
+    "brand": {
+      "primary": { "value": "#11743C", "comment": "Main BambooHR green — nav active bg, section headings, primary CTA" },
+      "primaryFallback": { "value": "#2E7918", "comment": "--fabric-theme-base CSS var fallback" },
+      "dark": { "value": "#0D5C30", "comment": "Darker green for hover states" }
+    },
+    "text": {
+      "primary": { "value": "#48413F", "comment": "Body text default" },
+      "dark": { "value": "#38312F", "comment": "Menu items, table rows, tab labels" },
+      "secondary": { "value": "#676260", "comment": "Secondary labels" },
+      "muted": { "value": "#777270", "comment": "Placeholders, notes, disabled text" },
+      "disabled": { "value": "#868180", "comment": "Disabled icons/toggles" },
+      "onBrand": { "value": "#FFFFFF", "comment": "Text on green backgrounds" },
+      "heading": { "value": "#11743C", "comment": "Section titles rendered in green" }
+    },
+    "action": {
+      "link": { "value": "#0B4FD1", "comment": "Hyperlinks and action text" },
+      "linkDark": { "value": "#0061AB", "comment": "Darker link variant" },
+      "info": { "value": "#007DB4", "comment": "Info state border/text" }
+    },
+    "semantic": {
+      "danger": { "value": "#DE1429", "comment": "Error states, destructive" },
+      "warning": { "value": "#CD4A00", "comment": "Warning states" },
+      "success": { "value": "#11743C", "comment": "Same as brand primary" }
+    },
+    "background": {
+      "white": { "value": "#FFFFFF" },
+      "subtle": { "value": "#F5F4F1", "comment": "Table headers, hover state, active menu items" },
+      "light": { "value": "#F6F6F4", "comment": "Disabled input backgrounds" },
+      "announcement": { "value": "#1C1C1A", "comment": "Top banner (trial notice)" }
+    },
+    "border": {
+      "light": { "value": "#E4E3E0", "comment": "Dividers, list separators" },
+      "medium": { "value": "#D4D2D0", "comment": "Form element hover border" },
+      "strong": { "value": "#C6C2BF", "comment": "Default input/select border" }
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "body": { "value": "Inter, sans-serif", "comment": "All UI text, inputs, buttons" },
+      "heading": { "value": "Fields, sans-serif", "comment": "Page titles and section headings only" }
+    },
+    "fontSize": {
+      "xs":   { "value": "13px", "comment": "Notes, small labels (teenie variant)" },
+      "sm":   { "value": "14px", "comment": "Small component variant" },
+      "base": { "value": "15px", "comment": "Default body size" },
+      "lg":   { "value": "16px", "comment": "Large component variant" },
+      "xl":   { "value": "24px", "comment": "Section header titles (Benefits, Carriers)" },
+      "2xl":  { "value": "42px", "comment": "Page-level headings (Settings)" }
+    },
+    "fontWeight": {
+      "regular":  { "value": 400 },
+      "medium":   { "value": 500 },
+      "semibold": { "value": 600 },
+      "bold":     { "value": 700 }
+    },
+    "lineHeight": {
+      "xs":   { "value": "19px" },
+      "sm":   { "value": "20px" },
+      "base": { "value": "22px" },
+      "lg":   { "value": "24px" },
+      "xl":   { "value": "30px" },
+      "2xl":  { "value": "52px" }
+    }
+  },
+
+  "spacing": {
+    "1":  { "value": "4px" },
+    "2":  { "value": "8px" },
+    "3":  { "value": "12px" },
+    "4":  { "value": "16px" },
+    "5":  { "value": "20px" },
+    "6":  { "value": "24px" },
+    "8":  { "value": "32px" },
+    "10": { "value": "40px" }
+  },
+
+  "borderRadius": {
+    "sm":   { "value": "2px",    "comment": "Link focus rings" },
+    "md":   { "value": "8px",    "comment": "Cards, modals, nav active item, dropdowns, inputs" },
+    "lg":   { "value": "16px",   "comment": "Fabric component default" },
+    "pill": { "value": "100px",  "comment": "Buttons" },
+    "full": { "value": "1000px", "comment": "Single-select pill toggle" }
+  },
+
+  "shadow": {
+    "button": { "value": "rgba(56, 49, 47, 0.03) 1px 1px 0px 1px", "comment": "Subtle button depth" },
+    "input":  { "value": "rgba(56, 49, 47, 0.04) 1px 1px 0px 1px", "comment": "Input field depth" },
+    "menu":   { "value": "rgba(56, 49, 47, 0.1) 3px 3px 10px 2px",  "comment": "Dropdown/popover shadow" }
+  },
+
+  "sizing": {
+    "headerHeight":   { "value": "91px" },
+    "inputHeightSm":  { "value": "32px", "comment": "Teenie / small variant" },
+    "inputHeightMd":  { "value": "40px", "comment": "Medium — default" },
+    "inputHeightLg":  { "value": "48px", "comment": "Large / biggie variant" },
+    "menuItemHeight": { "value": "42px", "comment": "min-height for menu/list rows" }
+  },
+
+  "transition": {
+    "fast": { "value": "0.3s cubic-bezier(0.4, 0, 0.2, 1)" }
+  },
+
+  "components": {
+    "buttonPrimary": {
+      "background":   "#11743C",
+      "color":        "#FFFFFF",
+      "border":       "1px solid #11743C",
+      "borderRadius": "100px",
+      "padding":      "8px 20px",
+      "fontSize":     "15px",
+      "fontWeight":   600,
+      "fontFamily":   "Inter, sans-serif",
+      "boxShadow":    "rgba(56, 49, 47, 0.03) 1px 1px 0px 1px"
+    },
+    "buttonSecondary": {
+      "background":   "#FFFFFF",
+      "color":        "#48413F",
+      "border":       "1px solid #C6C2BF",
+      "borderRadius": "100px",
+      "padding":      "6px 12px",
+      "fontSize":     "13px",
+      "fontWeight":   600,
+      "fontFamily":   "Inter, sans-serif",
+      "boxShadow":    "rgba(56, 49, 47, 0.03) 1px 1px 0px 1px"
+    },
+    "navItemDefault": {
+      "background":   "transparent",
+      "color":        "#48413F",
+      "borderRadius": "8px",
+      "padding":      "12px",
+      "fontSize":     "15px",
+      "fontWeight":   500
+    },
+    "navItemActive": {
+      "background":   "#11743C",
+      "color":        "#FFFFFF",
+      "borderRadius": "8px",
+      "padding":      "12px 16px",
+      "fontSize":     "15px",
+      "fontWeight":   700
+    },
+    "tabDefault": {
+      "color":        "#38312F",
+      "borderBottom": "2px solid transparent",
+      "padding":      "12px 16px",
+      "fontSize":     "15px",
+      "fontWeight":   400
+    },
+    "tabActive": {
+      "color":        "#11743C",
+      "borderBottom": "2px solid #11743C",
+      "fontWeight":   600
+    },
+    "inputDefault": {
+      "background":   "#FFFFFF",
+      "color":        "#48413F",
+      "border":       "1px solid #C6C2BF",
+      "borderRadius": "8px",
+      "height":       "40px",
+      "padding":      "8px 12px",
+      "fontSize":     "15px",
+      "fontWeight":   400,
+      "boxShadow":    "rgba(56, 49, 47, 0.04) 1px 1px 0px 1px"
+    },
+    "tableHeader": {
+      "background":  "#F5F4F1",
+      "color":       "#48413F",
+      "fontWeight":  600,
+      "fontSize":    "15px",
+      "padding":     "12px 16px"
+    },
+    "tableRow": {
+      "color":        "#38312F",
+      "fontWeight":   400,
+      "fontSize":     "15px",
+      "padding":      "12px 16px",
+      "borderBottom": "1px solid #E4E3E0"
+    },
+    "menuItem": {
+      "color":       "#38312F",
+      "minHeight":   "42px",
+      "padding":     "10px 16px",
+      "fontSize":    "15px",
+      "hoverBg":     "#F5F4F1"
+    },
+    "menuVessel": {
+      "background":   "#FFFFFF",
+      "border":       "1px solid #D4D2D0",
+      "borderRadius": "8px",
+      "boxShadow":    "rgba(56, 49, 47, 0.1) 3px 3px 10px 2px",
+      "minWidth":     "192px"
+    }
+  }
+}

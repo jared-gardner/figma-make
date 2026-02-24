@@ -1,0 +1,392 @@
+/*
+ * BambooHR Design Tokens
+ * Extracted from live app via DevTools — humaninterst.bamboohr.com
+ * Design system: Fabric (fab- prefix components)
+ * Fonts: Inter (body), Fields (headings)
+ * Last updated: 2026-02-21
+ */
+
+:root {
+
+  /* ─── BRAND / THEME ──────────────────────────────────────────── */
+  --fabric-theme-base: #2E7918;          /* CSS fallback used in Fabric */
+  --color-brand:       #11743C;          /* Actual rendered primary green */
+  --color-brand-dark:  #0D5C30;          /* Darker green for hover */
+
+  /* ─── TEXT COLORS ────────────────────────────────────────────── */
+  --color-text-primary:   #48413F;       /* rgb(72, 65, 63)  — body default */
+  --color-text-dark:      #38312F;       /* rgb(56, 49, 47)  — headings, menu items */
+  --color-text-secondary: #676260;       /* rgb(103, 98, 96) — secondary labels */
+  --color-text-muted:     #777270;       /* rgb(119, 114, 112) — placeholders, notes */
+  --color-text-disabled:  #868180;       /* rgb(134, 129, 128) — disabled states */
+  --color-text-on-brand:  #FFFFFF;       /* white text on green backgrounds */
+  --color-text-heading:   #11743C;       /* section headings rendered green */
+
+  /* ─── ACTION / INTERACTIVE ───────────────────────────────────── */
+  --color-action:         #0B4FD1;       /* rgb(11, 79, 209)  — links */
+  --color-action-dark:    #0061AB;       /* rgb(0, 97, 139) darker link */
+  --color-info:           #007DB4;       /* rgb(0, 125, 180) — info state */
+
+  /* ─── SEMANTIC ───────────────────────────────────────────────── */
+  --color-danger:         #DE1429;       /* rgb(222, 20, 41)  — error/destructive */
+  --color-warning:        #CD4A00;       /* rgb(205, 74, 0)   — warning */
+  --color-success:        #11743C;       /* same as brand green */
+
+  /* ─── BACKGROUNDS ────────────────────────────────────────────── */
+  --color-bg-white:       #FFFFFF;
+  --color-bg-page:        #FFFFFF;       /* main content background */
+  --color-bg-subtle:      #F5F4F1;       /* rgb(245, 244, 241) — table headers, hover */
+  --color-bg-light:       #F6F6F4;       /* rgb(246, 246, 244) — disabled inputs */
+  --color-bg-overlay:     rgba(56, 49, 47, 0.66);
+  --color-bg-announcement:#1C1C1A;       /* top trial banner dark bg */
+
+  /* ─── BORDERS ────────────────────────────────────────────────── */
+  --color-border-light:   #E4E3E0;       /* rgb(228, 227, 224) — dividers, list separators */
+  --color-border-medium:  #D4D2D0;       /* rgb(212, 210, 208) — form elements hover */
+  --color-border-strong:  #C6C2BF;       /* rgb(198, 194, 191) — default input border */
+
+  /* ─── TYPOGRAPHY ─────────────────────────────────────────────── */
+  --font-body:    Inter, sans-serif;
+  --font-heading: Fields, sans-serif;
+
+  /* Font sizes */
+  --font-size-xs:   13px;   /* notes, small labels, teenie size */
+  --font-size-sm:   14px;   /* small/teenie component variant */
+  --font-size-base: 15px;   /* body default */
+  --font-size-lg:   16px;   /* large variant */
+  --font-size-xl:   24px;   /* section header titles */
+  --font-size-2xl:  42px;   /* page-level h1/h2 */
+
+  /* Font weights */
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+
+  /* Line heights */
+  --line-height-xs:   19px;   /* paired with font-size-xs */
+  --line-height-sm:   20px;   /* paired with font-size-sm */
+  --line-height-base: 22px;   /* paired with font-size-base */
+  --line-height-lg:   24px;   /* paired with font-size-lg */
+  --line-height-xl:   30px;   /* paired with font-size-xl */
+  --line-height-2xl:  52px;   /* paired with font-size-2xl */
+
+  /* ─── SPACING ────────────────────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+
+  /* ─── BORDER RADIUS ──────────────────────────────────────────── */
+  --radius-sm:   2px;      /* links focus ring */
+  --radius-md:   8px;      /* cards, modals, nav active item, select dropdowns */
+  --radius-lg:   16px;     /* fabric components default */
+  --radius-pill: 100px;    /* buttons */
+  --radius-full: 1000px;   /* single-select toggle, full pill */
+
+  /* ─── SHADOWS ────────────────────────────────────────────────── */
+  --shadow-button: rgba(56, 49, 47, 0.03) 1px 1px 0px 1px;
+  --shadow-input:  rgba(56, 49, 47, 0.04) 1px 1px 0px 1px;
+  --shadow-menu:   rgba(56, 49, 47, 0.1) 3px 3px 10px 2px;
+
+  /* ─── COMPONENT SIZING ───────────────────────────────────────── */
+  --height-header:    91px;
+  --height-input-sm:  32px;   /* teenie / small */
+  --height-input-md:  40px;   /* medium (default) */
+  --height-input-lg:  48px;   /* large / biggie */
+  --height-menu-item: 42px;   /* min-height for menu options */
+  --height-select-sm: 32px;
+  --height-select-md: 40px;
+  --height-select-lg: 48px;
+
+  /* ─── TRANSITIONS ────────────────────────────────────────────── */
+  --transition-fast:   0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   COMPONENT REFERENCE STYLES
+   Reconstructed from computed styles — use as Figma component specs
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── BUTTONS ────────────────────────────────────────────────── */
+
+/* Primary button (filled green — "Ask" button style) */
+.btn-primary {
+  background-color: var(--color-brand);
+  color: var(--color-text-on-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: var(--radius-pill);
+  padding: 8px 20px;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-base);
+  box-shadow: var(--shadow-button);
+  cursor: pointer;
+}
+
+/* Secondary / Outlined button ("Add Carrier" style) */
+.btn-secondary {
+  background-color: var(--color-bg-white);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-base);
+  box-shadow: var(--shadow-button);
+  cursor: pointer;
+}
+
+/* Ghost / text button */
+.btn-ghost {
+  background: none;
+  border: none;
+  color: var(--color-action);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ─── NAVIGATION ─────────────────────────────────────────────── */
+
+/* Left sidebar nav item — default */
+.nav-item {
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-3);              /* 12px */
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Left sidebar nav item — active/selected */
+.nav-item--active {
+  background-color: var(--color-brand);
+  color: var(--color-text-on-brand);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-3) var(--space-4);  /* 12px 16px */
+  border-radius: var(--radius-md);
+}
+
+/* ─── TABS ───────────────────────────────────────────────────── */
+
+/* Tab bar item — default */
+.tab-item {
+  color: var(--color-text-dark);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+/* Tab bar item — active */
+.tab-item--active {
+  color: var(--color-brand);
+  font-weight: var(--font-weight-semibold);
+  border-bottom: 2px solid var(--color-brand);
+}
+
+/* ─── FORM INPUTS ────────────────────────────────────────────── */
+
+/* Text input / Select toggle */
+.input {
+  background-color: var(--color-bg-white);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  height: var(--height-input-md);
+  padding: var(--space-2) var(--space-3);  /* 8px 12px */
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  box-shadow: var(--shadow-input);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input:focus {
+  border-color: var(--color-brand);
+  box-shadow: 2px 2px 0 2px color-mix(in srgb, var(--color-brand) 5%, transparent),
+              0 0 0 0.5px var(--color-brand);
+  outline: none;
+}
+
+.input--error {
+  border-color: var(--color-danger);
+}
+
+.input--disabled {
+  background-color: var(--color-bg-light);
+  border-color: var(--color-border-medium);
+  cursor: default;
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ─── TABLE ──────────────────────────────────────────────────── */
+
+.table-header {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-3) var(--space-4);  /* 12px 16px */
+}
+
+.table-row {
+  color: var(--color-text-dark);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  border-bottom: 1px solid var(--color-border-light);
+  padding: var(--space-3) var(--space-4);
+}
+
+/* ─── MENU / DROPDOWN ────────────────────────────────────────── */
+
+.menu-vessel {
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-menu);
+  min-width: 192px;
+  overflow: hidden;
+}
+
+.menu-item {
+  color: var(--color-text-dark);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  min-height: var(--height-menu-item);
+  padding: 10px var(--space-4);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-item:hover,
+.menu-item--active {
+  background-color: var(--color-bg-subtle);
+}
+
+.menu-item--disabled {
+  color: var(--color-text-muted);
+  cursor: default;
+}
+
+.menu-divider {
+  border-top: 1px solid var(--color-border-light);
+  margin: var(--space-1) var(--space-4);  /* 4px 16px */
+}
+
+/* ─── TYPOGRAPHY SCALE ───────────────────────────────────────── */
+
+.text-page-title {        /* Settings, large page heading */
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-2xl);
+  color: var(--color-brand);
+}
+
+.text-section-title {     /* Benefits, Carriers — section headings */
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-xl);
+  color: var(--color-brand);
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+}
+
+.text-body-medium {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+}
+
+.text-label {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+}
+
+.text-note {              /* helper text, secondary info */
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xs);
+  color: var(--color-text-muted);
+}
+
+.text-link {
+  color: var(--color-action);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────────────────── */
+
+.global-header {
+  height: var(--height-header);
+  background-color: var(--color-bg-white);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.sidebar-nav {
+  padding: var(--space-6);    /* 24px */
+  background-color: var(--color-bg-white);
+}
+
+.announcement-bar {
+  background-color: var(--color-bg-announcement);
+  color: var(--color-text-on-brand);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  padding: 6px var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

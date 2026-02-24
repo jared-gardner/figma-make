@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1468">
+<title>401(k) — BambooHR Benefits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Inter, sans-serif; font-size: 15px; color: #48413F; background: #F6F6F4; min-width: 1468px; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+ul, ol { list-style: none; }
+svg { display: block; flex-shrink: 0; }
+
+/* ── TOKENS ──────────────────────────────────────────── */
+:root {
+  --green: #11743C;
+  --green-dark: #0D5C30;
+  --green-light: #EDFCF4;
+  --green-icon-bg: #F0FAF4;
+  --page-bg: #F6F6F4;
+  --white: #FFFFFF;
+  --text-primary: #48413F;
+  --text-dark: #38312F;
+  --text-muted: #777270;
+  --text-secondary: #676260;
+  --border-light: #E4E3E0;
+  --border-medium: #D4D2D0;
+  --bg-subtle: #F5F4F1;
+  --hi-navy: #002647;
+  --hi-teal: #00C4B0;
+  --hi-green: #529B2B;
+  --hi-green-light: #EDF6E6;
+  --shadow-btn: rgba(56,49,47,0.03) 1px 1px 0px 1px;
+  --shadow-card: 0 2px 12px rgba(56,49,47,0.08);
+  --shadow-panel: 0 4px 24px rgba(56,49,47,0.1);
+  --font-display: 'Playfair Display', Georgia, serif;
+}
+
+/* ── ANNOUNCEMENT BAR ────────────────────────────────── */
+.announcement-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 40px; background: #FFF8E7;
+  border-bottom: 1px solid #F0D98A;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; font-size: 13px; color: #6B4E00;
+}
+.announcement-left { display: flex; align-items: center; gap: 8px; }
+.announcement-right { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 13px; }
+.announcement-right a { color: var(--green); font-weight: 600; }
+
+/* ── TOP HEADER ──────────────────────────────────────── */
+.top-header {
+  position: fixed; top: 40px; left: 0; right: 0; z-index: 100;
+  height: 56px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+  display: flex; align-items: center;
+  padding: 0 20px 0 0;
+}
+.header-logo {
+  width: 185px; flex-shrink: 0;
+  display: flex; align-items: center;
+  padding: 0 20px;
+  border-right: 1px solid var(--border-light);
+  height: 100%;
+}
+.header-search {
+  flex: 1; max-width: 360px; margin-left: 20px;
+  height: 36px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 14px;
+  font-size: 14px; color: var(--text-muted);
+}
+.header-right { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+.icon-btn {
+  width: 36px; height: 36px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; color: var(--text-muted);
+}
+.icon-btn:hover { background: var(--bg-subtle); color: var(--text-primary); }
+.notif-badge {
+  position: absolute; top: 3px; right: 3px;
+  background: var(--green); color: #fff;
+  font-size: 9px; font-weight: 700;
+  min-width: 14px; height: 14px; border-radius: 100px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 3px;
+}
+.header-avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--green); color: #fff;
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin-left: 8px; cursor: pointer;
+}
+.ask-btn {
+  display: flex; align-items: center; gap: 5px;
+  height: 32px; padding: 0 14px;
+  border: 1.5px solid var(--green); border-radius: 100px;
+  color: var(--green); font-size: 13px; font-weight: 600;
+  background: var(--white); margin-left: 8px;
+}
+
+/* ── LEFT NAV SIDEBAR ────────────────────────────────── */
+.left-nav {
+  position: fixed; left: 0; top: 96px; bottom: 0; z-index: 99;
+  width: 185px;
+  background: var(--white);
+  border-right: 1px solid var(--border-light);
+  display: flex; flex-direction: column;
+  padding: 12px 0;
+  overflow-y: auto;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 16px; font-size: 14px; font-weight: 500;
+  color: var(--text-primary); cursor: pointer;
+  border-radius: 0;
+}
+.nav-item:hover { background: var(--bg-subtle); }
+.nav-item.active {
+  color: var(--green); font-weight: 600;
+  background: var(--green-icon-bg);
+}
+.nav-item svg { color: currentColor; flex-shrink: 0; }
+.nav-spacer { height: 1px; background: var(--border-light); margin: 6px 0; }
+.nav-sub-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 16px 8px 42px; font-size: 13px; font-weight: 400;
+  color: var(--text-secondary); cursor: pointer;
+}
+.nav-sub-item:hover { background: var(--bg-subtle); color: var(--text-primary); }
+.nav-sub-item.active { color: var(--green); font-weight: 600; }
+
+/* ── MAIN WRAPPER ────────────────────────────────────── */
+.main-wrapper {
+  margin-top: 96px;
+  margin-left: 185px;
+  min-height: calc(100vh - 96px);
+  background: var(--page-bg);
+}
+
+/* ── PAGE HEADER AREA ────────────────────────────────── */
+.page-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+  padding: 20px 32px 0;
+}
+.page-header-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 16px;
+}
+.page-header-left h1 {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 700; color: var(--green);
+  line-height: 1.1; margin-bottom: 6px;
+}
+.page-header-meta {
+  display: flex; align-items: center; gap: 16px;
+  font-size: 13px; color: var(--text-muted);
+}
+.status-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #EDFCF4; color: var(--green);
+  font-size: 12px; font-weight: 600; padding: 3px 10px;
+  border-radius: 100px;
+}
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.powered-by-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px; padding: 5px 12px;
+  font-size: 12px; color: var(--text-muted);
+}
+.powered-by-badge strong { color: var(--hi-navy); font-weight: 700; }
+
+/* ── SUB-TABS ────────────────────────────────────────── */
+.sub-tabs {
+  display: flex; gap: 0;
+  border-bottom: none;
+}
+.sub-tab {
+  padding: 10px 20px;
+  font-size: 14px; font-weight: 500;
+  color: var(--text-secondary); cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.sub-tab:hover { color: var(--text-primary); border-bottom-color: var(--border-medium); }
+.sub-tab.active { color: var(--green); font-weight: 600; border-bottom-color: var(--green); }
+
+/* ── CONTENT AREA ────────────────────────────────────── */
+.content-area {
+  padding: 24px 32px;
+}
+
+/* Tab panels */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── STAT STRIP ──────────────────────────────────────── */
+.stat-strip {
+  display: flex;
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.stat-item {
+  flex: 1; padding: 18px 24px;
+  border-right: 1px solid var(--border-light);
+}
+.stat-item:last-child { border-right: none; }
+.stat-item .val {
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 700; color: var(--text-dark);
+  line-height: 1; margin-bottom: 5px;
+}
+.stat-item .val.green { color: var(--green); }
+.stat-item .val.navy { color: var(--hi-navy); }
+.stat-item .lbl { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.stat-item .sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.stat-change {
+  font-size: 11px; font-weight: 600; margin-top: 4px;
+  color: var(--green);
+}
+
+/* ── DASHBOARD GRID ──────────────────────────────────── */
+.dash-grid {
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.dash-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.dash-side { width: 280px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; }
+
+/* ── PANEL CARD ──────────────────────────────────────── */
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.panel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+.panel-header h3 {
+  font-size: 14px; font-weight: 700; color: var(--text-dark);
+  display: flex; align-items: center; gap: 8px;
+}
+.panel-body { padding: 16px 20px; }
+.panel-link {
+  font-size: 13px; font-weight: 600; color: #0B4FD1;
+  display: inline-flex; align-items: center; gap: 4px;
+  display: flex; align-items: center; gap: 4px;
+}
+
+/* ── ALERT TASK ──────────────────────────────────────── */
+.task-alert {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px;
+  background: #FFFBF0; border: 1px solid #F5E08A;
+  border-radius: 8px; margin-bottom: 8px;
+}
+.task-alert:last-child { margin-bottom: 0; }
+.task-alert-left { display: flex; align-items: center; gap: 10px; }
+.task-dot { width: 8px; height: 8px; border-radius: 50%; background: #D97706; flex-shrink: 0; }
+.task-dot.red { background: #DC2626; }
+.task-title { font-size: 13px; font-weight: 600; color: var(--text-dark); }
+.task-desc { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+.task-btn {
+  font-size: 12px; font-weight: 600; color: var(--hi-navy);
+  background: #E8F0F7; border-radius: 100px; padding: 5px 14px;
+  white-space: nowrap;
+}
+
+/* ── CONTRIBUTION ROW ────────────────────────────────── */
+.contrib-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 14px;
+}
+.contrib-row:last-child { border-bottom: none; }
+.contrib-label { color: var(--text-secondary); }
+.contrib-val { font-weight: 700; color: var(--text-dark); }
+.contrib-val.green { color: var(--green); }
+
+/* Monthly contribution chart */
+.bar-chart {
+  display: flex; align-items: flex-end; gap: 6px;
+  height: 80px; padding-top: 8px;
+}
+.bar-group { flex: 1; display: flex; gap: 2px; align-items: flex-end; }
+.bar { border-radius: 3px 3px 0 0; }
+.bar-emp { background: #11743C; }
+.bar-match { background: #A3D87A; }
+.bar-label { text-align: center; font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+.chart-legend { display: flex; gap: 16px; margin-top: 10px; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-muted); }
+.legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+/* ── ACCOUNT MANAGER CARD ────────────────────────────── */
+.am-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-card);
+}
+.am-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+.am-person { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.am-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--hi-navy); color: #fff;
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.am-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+.am-role { font-size: 12px; color: var(--text-muted); }
+.am-actions { display: flex; flex-direction: column; gap: 6px; }
+.am-action {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: #0B4FD1; font-weight: 600;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.am-action:last-child { border-bottom: none; padding-bottom: 0; }
+
+/* ── PAYROLL CARD ────────────────────────────────────── */
+.payroll-card {
+  background: #fff;
+  border-radius: 10px; padding: 16px 20px;
+  border: 1px solid var(--border-light);
+}
+.payroll-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.payroll-date { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+.payroll-sub { font-size: 12px; color: var(--text-muted); }
+.payroll-link { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; color: #0B4FD1; margin-top: 12px; }
+
+/* ── QUICK LINKS ─────────────────────────────────────── */
+.quick-links { display: flex; flex-direction: column; gap: 2px; }
+.quick-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 0;
+  font-size: 13px; color: #0B4FD1; font-weight: 500;
+  border-bottom: 1px solid var(--border-light); cursor: pointer;
+}
+.quick-link:last-child { border-bottom: none; }
+.quick-link:hover { color: #0838A8; }
+
+/* ── EMPLOYEES TABLE ─────────────────────────────────── */
+.emp-table-wrap {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.emp-table-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+.emp-table-header h3 { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+.table-actions { display: flex; gap: 8px; }
+.btn-sm {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 32px; padding: 0 14px;
+  border-radius: 100px; font-size: 13px; font-weight: 600;
+  box-shadow: var(--shadow-btn);
+}
+.btn-sm.primary { background: var(--green); color: #fff; }
+.btn-sm.outlined { border: 1.5px solid var(--border-medium); color: var(--text-primary); background: var(--white); }
+.btn-sm.outlined:hover { border-color: var(--green); color: var(--green); }
+table.data-table { width: 100%; border-collapse: collapse; }
+table.data-table th {
+  background: var(--bg-subtle);
+  text-align: left; font-size: 12px; font-weight: 600;
+  color: var(--text-secondary); padding: 10px 16px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border-bottom: 1px solid var(--border-light);
+}
+table.data-table td {
+  padding: 12px 16px; font-size: 13px; color: var(--text-dark);
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: middle;
+}
+table.data-table tr:last-child td { border-bottom: none; }
+table.data-table tr:hover td { background: #FAFAF8; }
+.emp-cell { display: flex; align-items: center; gap: 10px; }
+.emp-init {
+  width: 30px; height: 30px; border-radius: 50%;
+  font-size: 11px; font-weight: 700; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.emp-full-name { font-weight: 600; color: var(--text-dark); font-size: 13px; }
+.emp-title { font-size: 11px; color: var(--text-muted); }
+.pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 100px;
+}
+.pill.enrolled { background: var(--green-light); color: var(--green); }
+.pill.pending { background: #FEF3C7; color: #92400E; }
+.pill.not-enrolled { background: var(--bg-subtle); color: var(--text-muted); }
+.deferral-cell { display: flex; align-items: center; gap: 8px; }
+.deferral-pct { font-weight: 700; color: var(--hi-navy); font-size: 13px; min-width: 30px; }
+.mini-bar { flex: 1; height: 5px; background: var(--border-light); border-radius: 3px; overflow: hidden; min-width: 60px; }
+.mini-fill { height: 100%; border-radius: 3px; background: #11743C; }
+
+/* ── CONTRIBUTIONS TAB ───────────────────────────────── */
+.contrib-summary-grid { display: flex; gap: 16px; margin-bottom: 20px; }
+.contrib-summary-card {
+  flex: 1; background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 10px; padding: 18px 20px;
+  box-shadow: var(--shadow-card);
+}
+.contrib-summary-card .card-lbl { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+.contrib-summary-card .card-val {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 700; color: var(--text-dark);
+}
+.contrib-summary-card .card-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.contrib-summary-card .card-sub span { color: var(--green); font-weight: 600; }
+.monthly-table-wrap {
+  background: var(--white); border: 1px solid var(--border-light);
+  border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-card);
+}
+
+/* ── INVESTMENTS TAB ─────────────────────────────────── */
+.investments-header {
+  display: flex; gap: 20px; margin-bottom: 20px;
+}
+.invest-overview {
+  background: var(--white); border: 1px solid var(--border-light);
+  border-radius: 10px; padding: 20px 24px;
+  box-shadow: var(--shadow-card); flex: 0 0 320px;
+}
+.invest-overview h3 { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+.invest-total { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--text-dark); margin: 8px 0 16px; }
+.donut-wrap { display: flex; align-items: center; gap: 20px; }
+.invest-legend { display: flex; flex-direction: column; gap: 8px; }
+.invest-legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.invest-legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.invest-legend-name { color: var(--text-secondary); }
+.invest-legend-pct { font-weight: 700; color: var(--text-dark); margin-left: auto; min-width: 36px; text-align: right; }
+.fund-table-wrap {
+  flex: 1; background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 10px; overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.fund-table-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; border-bottom: 1px solid var(--border-light);
+}
+.fund-table-header h3 { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+
+/* ── COMPLIANCE TAB ──────────────────────────────────── */
+.compliance-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.compliance-card {
+  background: var(--white); border: 1px solid var(--border-light);
+  border-radius: 10px; box-shadow: var(--shadow-card); overflow: hidden;
+}
+.compliance-card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; border-bottom: 1px solid var(--border-light);
+  font-size: 14px; font-weight: 700; color: var(--text-dark);
+}
+.compliance-result {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
+}
+.compliance-result.pass { background: var(--green-light); color: var(--green); }
+.compliance-result.pending { background: #EFF6FF; color: #1D4ED8; }
+.compliance-result.not-required { background: var(--bg-subtle); color: var(--text-muted); }
+.compliance-detail { padding: 14px 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.compliance-row-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 0; border-bottom: 1px solid var(--border-light);
+  font-size: 13px;
+}
+.compliance-row-item:last-child { border-bottom: none; }
+
+/* ── REPORTS TAB ─────────────────────────────────────── */
+.reports-grid { display: flex; flex-direction: column; gap: 8px; }
+.report-item {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--white); border: 1px solid var(--border-light);
+  border-radius: 10px; padding: 14px 20px;
+  box-shadow: var(--shadow-card);
+}
+.report-left { display: flex; align-items: center; gap: 12px; }
+.report-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--bg-subtle);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.report-name { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+.report-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.report-actions { display: flex; align-items: center; gap: 8px; }
+
+/* ── BUTTONS ─────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 36px; padding: 0 18px;
+  background: var(--green); color: #fff;
+  border-radius: 100px; font-size: 13px; font-weight: 600;
+  box-shadow: var(--shadow-btn);
+}
+.btn-outlined {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 36px; padding: 0 16px;
+  border: 1.5px solid var(--border-medium); color: var(--text-primary);
+  border-radius: 100px; font-size: 13px; font-weight: 600;
+  background: var(--white); box-shadow: var(--shadow-btn);
+}
+.btn-outlined:hover { border-color: var(--green); color: var(--green); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 32px; padding: 0 12px;
+  color: var(--hi-green); font-size: 12px; font-weight: 600;
+  background: var(--hi-green-light); border-radius: 100px;
+}
+</style>
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div class="announcement-bar">
+  <div class="announcement-left">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span><strong>5</strong> days left in your free trial. Call <strong>1-801-724-6601</strong> to sign up!</span>
+  </div>
+  <div class="announcement-right">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    <a href="#">Viewing sample data. Clear data and add your own »</a>
+  </div>
+</div>
+
+<!-- ── TOP HEADER ── -->
+<header class="top-header">
+  <div class="header-logo">
+    <svg width="140" height="28" viewBox="0 0 220 44" fill="none">
+      <g>
+        <path d="M18 4C11 4 6 9 6 16c0 4 2 7.5 5 9.5L10 38h4l-1-8c1 .3 2 .5 3 .5 7 0 12-5 12-12S25 4 18 4z" fill="#11743C"/>
+        <path d="M22 14c0-4-2-7-5.5-8.5C14 7 12 10 12 14c0 3 1.5 5.5 4 7 2.5-1.5 6-4 6-7z" fill="#8DC63F" opacity="0.7"/>
+      </g>
+      <text x="40" y="30" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#48413F">bamboo</text>
+      <text x="133" y="30" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#11743C">HR</text>
+    </svg>
+  </div>
+  <div class="header-search">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Search…</span>
+  </div>
+  <div class="header-right">
+    <div class="icon-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <span class="notif-badge">4</span>
+    </div>
+    <div class="icon-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <div class="icon-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+    </div>
+    <button class="ask-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Ask
+    </button>
+    <div class="header-avatar">JG</div>
+  </div>
+</header>
+
+<!-- ── LEFT NAV ── -->
+<nav class="left-nav">
+  <div class="nav-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+    Home
+  </div>
+  <div class="nav-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    My Info
+  </div>
+  <div class="nav-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    People
+  </div>
+  <div class="nav-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Hiring
+  </div>
+  <div class="nav-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+    Reports
+  </div>
+  <div class="nav-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+    Files
+  </div>
+  <div class="nav-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+    Payroll
+  </div>
+  <div class="nav-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    Compensation
+  </div>
+  <div class="nav-spacer"></div>
+  <div class="nav-item active">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+    Benefits
+  </div>
+  <div class="nav-sub-item">Health &amp; Dental</div>
+  <div class="nav-sub-item active">401(k)</div>
+  <div class="nav-sub-item">Life Insurance</div>
+  <div class="nav-sub-item">FSA / HSA</div>
+  <div class="nav-spacer"></div>
+  <div class="nav-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+    Global Employment
+    <span style="font-size:10px;color:var(--text-muted);margin-left:auto;">Remote</span>
+  </div>
+</nav>
+
+<!-- ── MAIN WRAPPER ── -->
+<div class="main-wrapper">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-top">
+      <div class="page-header-left">
+        <h1>401(k) plans</h1>
+        <div class="page-header-meta">
+          <span class="status-pill"><span class="status-dot"></span>Active</span>
+          <span>Plan year: 01/01/2026 – 12/31/2026</span>
+          <span>·</span>
+          <span>Plan #401-2847</span>
+          <span>·</span>
+          <span style="color:var(--text-primary);">Acme Technologies, Inc.</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="powered-by-badge">
+          Powered by
+          <svg width="86" height="14" viewBox="0 0 86 14" fill="none">
+            <text x="0" y="11" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#002647">Human Interest</text>
+          </svg>
+        </div>
+        <button class="btn-outlined">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          Plan Settings
+        </button>
+        <button class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Employee
+        </button>
+      </div>
+    </div>
+
+    <!-- SUB-TABS -->
+    <div class="sub-tabs">
+      <div class="sub-tab active" onclick="showTab('overview', this)">Overview</div>
+      <div class="sub-tab" onclick="showTab('employees', this)">Employees</div>
+      <div class="sub-tab" onclick="showTab('contributions', this)">Contributions</div>
+      <div class="sub-tab" onclick="showTab('investments', this)">Investments</div>
+      <div class="sub-tab" onclick="showTab('compliance', this)">Compliance</div>
+      <div class="sub-tab" onclick="showTab('reports', this)">Reports</div>
+    </div>
+  </div>
+
+  <!-- CONTENT AREA -->
+  <div class="content-area">
+
+    <!-- ══════════════════════════════════
+         OVERVIEW TAB
+    ══════════════════════════════════ -->
+    <div id="overview" class="tab-panel active">
+
+      <!-- Stats strip -->
+      <div class="stat-strip">
+        <div class="stat-item">
+          <div class="val navy">$2,847,392</div>
+          <div class="lbl">Total Plan Assets</div>
+          <div class="stat-change">↑ $186,240 this year</div>
+        </div>
+        <div class="stat-item">
+          <div class="val">34 <span style="font-size:16px;font-weight:500;color:var(--text-muted);">/ 47</span></div>
+          <div class="lbl">Enrolled / Eligible</div>
+          <div class="sub">2 pending enrollment</div>
+        </div>
+        <div class="stat-item">
+          <div class="val green">72%</div>
+          <div class="lbl">Participation Rate</div>
+          <div class="stat-change">↑ 4% from last year</div>
+        </div>
+        <div class="stat-item">
+          <div class="val">6.2%</div>
+          <div class="lbl">Avg Deferral Rate</div>
+          <div class="sub">Employer match: 4%</div>
+        </div>
+        <div class="stat-item">
+          <div class="val">$186,400</div>
+          <div class="lbl">2025 Employee Contributions</div>
+          <div class="sub">+ $74,560 employer match</div>
+        </div>
+      </div>
+
+      <!-- Dashboard grid -->
+      <div class="dash-grid">
+
+        <!-- LEFT: Main content -->
+        <div class="dash-main">
+
+          <!-- Outstanding Tasks -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Outstanding Tasks
+                <span style="background:#FEF3C7;color:#92400E;font-size:11px;font-weight:700;padding:2px 7px;border-radius:100px;">2</span>
+              </h3>
+              <span class="panel-link">View all <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+            </div>
+            <div class="panel-body" style="display:flex;flex-direction:column;gap:8px;">
+              <div class="task-alert">
+                <div class="task-alert-left">
+                  <div class="task-dot"></div>
+                  <div>
+                    <div class="task-title">Annual 401(k) Compliance Review Due</div>
+                    <div class="task-desc">Due March 15, 2026 — Review officers, owners &amp; HCEs for compliance testing</div>
+                  </div>
+                </div>
+                <button class="task-btn">Go to Task</button>
+              </div>
+              <div class="task-alert">
+                <div class="task-alert-left">
+                  <div class="task-dot red"></div>
+                  <div>
+                    <div class="task-title">2 Employees Have Not Completed Enrollment</div>
+                    <div class="task-desc">Jessica White and Ryan Adams are eligible but have not elected a deferral</div>
+                  </div>
+                </div>
+                <button class="task-btn">Send Reminder</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contributions Summary -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                Contributions
+              </h3>
+              <span class="panel-link" onclick="showTab('contributions', document.querySelector('.sub-tab:nth-child(3)'))">View details <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+            </div>
+            <div class="panel-body">
+              <div style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Last Contribution — February 15, 2026</div>
+              <div class="contrib-row">
+                <span class="contrib-label">Employee Contributions</span>
+                <span class="contrib-val">$15,533</span>
+              </div>
+              <div class="contrib-row">
+                <span class="contrib-label">Employer Match</span>
+                <span class="contrib-val">$6,213</span>
+              </div>
+              <div class="contrib-row" style="border-bottom:none;">
+                <span class="contrib-label" style="font-weight:600;color:var(--text-dark);">Total</span>
+                <span class="contrib-val green" style="font-size:16px;">$21,746</span>
+              </div>
+              <div style="margin-top:16px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                  <span style="font-size:12px;font-weight:600;color:var(--text-muted);">2026 YTD (Jan–Feb)</span>
+                </div>
+                <div class="contrib-row">
+                  <span class="contrib-label">YTD Employee Contributions</span>
+                  <span class="contrib-val">$32,480</span>
+                </div>
+                <div class="contrib-row">
+                  <span class="contrib-label">YTD Employer Match</span>
+                  <span class="contrib-val">$12,992</span>
+                </div>
+              </div>
+              <!-- Mini bar chart -->
+              <div style="margin-top:16px;">
+                <div style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Monthly (2026)</div>
+                <div style="display:flex;gap:12px;align-items:flex-end;">
+                  <div style="flex:1;">
+                    <div style="display:flex;align-items:flex-end;gap:3px;height:56px;">
+                      <div style="flex:1;background:#11743C;border-radius:3px 3px 0 0;height:100%;"></div>
+                      <div style="flex:1;background:#A3D87A;border-radius:3px 3px 0 0;height:40%;"></div>
+                    </div>
+                    <div style="text-align:center;font-size:10px;color:var(--text-muted);margin-top:4px;">Jan</div>
+                  </div>
+                  <div style="flex:1;">
+                    <div style="display:flex;align-items:flex-end;gap:3px;height:56px;">
+                      <div style="flex:1;background:#11743C;border-radius:3px 3px 0 0;height:100%;"></div>
+                      <div style="flex:1;background:#A3D87A;border-radius:3px 3px 0 0;height:40%;"></div>
+                    </div>
+                    <div style="text-align:center;font-size:10px;color:var(--text-muted);margin-top:4px;">Feb</div>
+                  </div>
+                  <div style="flex:1;opacity:0.25;">
+                    <div style="display:flex;align-items:flex-end;gap:3px;height:56px;">
+                      <div style="flex:1;background:var(--border-medium);border-radius:3px 3px 0 0;height:100%;"></div>
+                      <div style="flex:1;background:var(--border-medium);border-radius:3px 3px 0 0;height:40%;"></div>
+                    </div>
+                    <div style="text-align:center;font-size:10px;color:var(--text-muted);margin-top:4px;">Mar</div>
+                  </div>
+                  <div style="flex:1;opacity:0.25;">
+                    <div style="display:flex;align-items:flex-end;gap:3px;height:56px;">
+                      <div style="flex:1;background:var(--border-medium);border-radius:3px 3px 0 0;height:100%;"></div>
+                      <div style="flex:1;background:var(--border-medium);border-radius:3px 3px 0 0;height:40%;"></div>
+                    </div>
+                    <div style="text-align:center;font-size:10px;color:var(--text-muted);margin-top:4px;">Apr</div>
+                  </div>
+                  <div style="flex:1;opacity:0.25;">
+                    <div style="display:flex;align-items:flex-end;gap:3px;height:56px;">
+                      <div style="flex:1;background:var(--border-medium);border-radius:3px 3px 0 0;height:100%;"></div>
+                      <div style="flex:1;background:var(--border-medium);border-radius:3px 3px 0 0;height:40%;"></div>
+                    </div>
+                    <div style="text-align:center;font-size:10px;color:var(--text-muted);margin-top:4px;">May</div>
+                  </div>
+                  <div style="flex:1;opacity:0.25;">
+                    <div style="display:flex;align-items:flex-end;gap:3px;height:56px;">
+                      <div style="flex:1;background:var(--border-medium);border-radius:3px 3px 0 0;height:100%;"></div>
+                      <div style="flex:1;background:var(--border-medium);border-radius:3px 3px 0 0;height:40%;"></div>
+                    </div>
+                    <div style="text-align:center;font-size:10px;color:var(--text-muted);margin-top:4px;">Jun</div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:14px;margin-top:8px;">
+                  <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);">
+                    <div style="width:8px;height:8px;border-radius:2px;background:#11743C;"></div>Employee
+                  </div>
+                  <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);">
+                    <div style="width:8px;height:8px;border-radius:2px;background:#A3D87A;"></div>Employer Match
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                Recent Activity
+              </h3>
+              <span class="panel-link">View activity log <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+            </div>
+            <div class="panel-body" style="padding:0;">
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="width:7px;height:7px;border-radius:50%;background:var(--green);margin-top:5px;flex-shrink:0;"></div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:var(--text-dark);">Contribution processed — $21,746</div>
+                  <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">February 15, 2026 · Payroll sync from BambooHR</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="width:7px;height:7px;border-radius:50%;background:#74B856;margin-top:5px;flex-shrink:0;"></div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:var(--text-dark);">Kevin Clark updated deferral rate to 6%</div>
+                  <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">February 10, 2026 · Self-service via HI participant portal</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="width:7px;height:7px;border-radius:50%;background:var(--green);margin-top:5px;flex-shrink:0;"></div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:var(--text-dark);">Contribution processed — $21,746</div>
+                  <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">January 31, 2026 · Payroll sync from BambooHR</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="width:7px;height:7px;border-radius:50%;background:#F59E0B;margin-top:5px;flex-shrink:0;"></div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:var(--text-dark);">Ryan Adams added as eligible employee</div>
+                  <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">January 15, 2026 · Synced from BambooHR</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 20px;">
+                <div style="width:7px;height:7px;border-radius:50%;background:#74B856;margin-top:5px;flex-shrink:0;"></div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:var(--text-dark);">Amanda Foster enrolled — 3% deferral</div>
+                  <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">January 8, 2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /dash-main -->
+
+        <!-- RIGHT: Sidebar -->
+        <div class="dash-side">
+
+          <!-- Account Manager -->
+          <div class="am-card">
+            <div class="am-label">Account Manager</div>
+            <div class="am-person">
+              <div class="am-avatar">SC</div>
+              <div>
+                <div class="am-name">Sarah Chen</div>
+                <div class="am-role">Human Interest</div>
+              </div>
+            </div>
+            <div class="am-actions">
+              <div class="am-action">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Ask a question
+              </div>
+              <div class="am-action">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Schedule time with me
+              </div>
+              <div class="am-action">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Visit Help Center
+              </div>
+            </div>
+          </div>
+
+          <!-- Next Payroll -->
+          <div class="payroll-card">
+            <div class="payroll-label">Next Payroll Date</div>
+            <div class="payroll-date">March 1, 2026</div>
+            <div class="payroll-sub">Contributions will process within 3 business days</div>
+            <div class="payroll-link">View payroll <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          </div>
+
+          <!-- Managing Your Plan -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Managing Your Plan</h3>
+            </div>
+            <div class="panel-body" style="padding:8px 20px;">
+              <div class="quick-links">
+                <div class="quick-link">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Update employee information
+                </div>
+                <div class="quick-link">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Download employee deferrals
+                </div>
+                <div class="quick-link">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Initiate new contribution
+                </div>
+                <div class="quick-link">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  View plan documents
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plan Summary -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Plan Summary</h3>
+            </div>
+            <div class="panel-body" style="padding:12px 20px;">
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border-light);">
+                  <span style="color:var(--text-muted);">Plan type</span>
+                  <span style="font-weight:600;color:var(--text-dark);">Safe Harbor 401(k)</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border-light);">
+                  <span style="color:var(--text-muted);">Employer match</span>
+                  <span style="font-weight:600;color:var(--text-dark);">100% up to 4%</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border-light);">
+                  <span style="color:var(--text-muted);">Vesting schedule</span>
+                  <span style="font-weight:600;color:var(--text-dark);">Immediate</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;">
+                  <span style="color:var(--text-muted);">Payroll provider</span>
+                  <span style="font-weight:600;color:var(--green);">BambooHR ✓</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /dash-side -->
+      </div><!-- /dash-grid -->
+    </div><!-- /overview tab -->
+
+
+    <!-- ══════════════════════════════════
+         EMPLOYEES TAB
+    ══════════════════════════════════ -->
+    <div id="employees" class="tab-panel">
+      <div class="emp-table-wrap">
+        <div class="emp-table-header">
+          <h3>Employees <span style="font-weight:400;color:var(--text-muted);font-size:13px;">47 eligible · 34 enrolled · 2 pending</span></h3>
+          <div class="table-actions">
+            <button class="btn-sm outlined">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export CSV
+            </button>
+            <button class="btn-sm primary">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Employee
+            </button>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Status</th>
+              <th>Deferral Rate</th>
+              <th>Employer Match</th>
+              <th>2026 YTD Contributions</th>
+              <th>Enrolled Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#5C6BC0;">SJ</div><div><div class="emp-full-name">Sarah Johnson</div><div class="emp-title">Marketing Director</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">8%</span><div class="mini-bar"><div class="mini-fill" style="width:67%;"></div></div></div></td>
+              <td>4% (max)</td>
+              <td><strong>$2,400</strong></td>
+              <td style="color:var(--text-muted);">Mar 12, 2021</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#0F766E;">MT</div><div><div class="emp-full-name">Marcus Thompson</div><div class="emp-title">Sr. Software Engineer</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">10%</span><div class="mini-bar"><div class="mini-fill" style="width:83%;"></div></div></div></td>
+              <td>4% (max)</td>
+              <td><strong>$3,833</strong></td>
+              <td style="color:var(--text-muted);">Jan 5, 2020</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#529B2B;">ER</div><div><div class="emp-full-name">Emily Rodriguez</div><div class="emp-title">Product Manager</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">6%</span><div class="mini-bar"><div class="mini-fill" style="width:50%;"></div></div></div></td>
+              <td>4% (max)</td>
+              <td><strong>$1,800</strong></td>
+              <td style="color:var(--text-muted);">Jul 18, 2022</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#7C3AED;">DK</div><div><div class="emp-full-name">David Kim</div><div class="emp-title">Sales Manager</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">5%</span><div class="mini-bar"><div class="mini-fill" style="width:42%;"></div></div></div></td>
+              <td>4% (max)</td>
+              <td><strong>$1,479</strong></td>
+              <td style="color:var(--text-muted);">Sep 2, 2021</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#B45309;">JW</div><div><div class="emp-full-name">James Wilson</div><div class="emp-title">DevOps Engineer</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">12%</span><div class="mini-bar"><div class="mini-fill" style="width:100%;"></div></div></div></td>
+              <td>4% (max)</td>
+              <td><strong>$3,500</strong></td>
+              <td style="color:var(--text-muted);">Feb 14, 2019</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#0891B2;">LP</div><div><div class="emp-full-name">Lisa Park</div><div class="emp-title">UX Designer</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">4%</span><div class="mini-bar"><div class="mini-fill" style="width:33%;"></div></div></div></td>
+              <td>4% (max)</td>
+              <td><strong>$1,067</strong></td>
+              <td style="color:var(--text-muted);">Nov 3, 2022</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#11743C;">RG</div><div><div class="emp-full-name">Rachel Green</div><div class="emp-title">HR Manager</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">6%</span><div class="mini-bar"><div class="mini-fill" style="width:50%;"></div></div></div></td>
+              <td>4% (max)</td>
+              <td><strong>$1,900</strong></td>
+              <td style="color:var(--text-muted);">Apr 22, 2020</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#475569;">TN</div><div><div class="emp-full-name">Tom Nguyen</div><div class="emp-title">Finance Analyst</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">8%</span><div class="mini-bar"><div class="mini-fill" style="width:67%;"></div></div></div></td>
+              <td>4% (max)</td>
+              <td><strong>$2,100</strong></td>
+              <td style="color:var(--text-muted);">Jun 7, 2021</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#BE185D;">AF</div><div><div class="emp-full-name">Amanda Foster</div><div class="emp-title">Customer Success</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">3%</span><div class="mini-bar"><div class="mini-fill" style="width:25%;"></div></div></div></td>
+              <td>3% (partial)</td>
+              <td><strong>$683</strong></td>
+              <td style="color:var(--text-muted);">Jan 8, 2026</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#9A3412;">KL</div><div><div class="emp-full-name">Kevin Lee</div><div class="emp-title">Backend Engineer</div></div></div></td>
+              <td><span class="pill enrolled">Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct">6%</span><div class="mini-bar"><div class="mini-fill" style="width:50%;"></div></div></div></td>
+              <td>4% (max)</td>
+              <td><strong>$1,733</strong></td>
+              <td style="color:var(--text-muted);">Aug 15, 2023</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#9CA3AF;">JW</div><div><div class="emp-full-name">Jessica White</div><div class="emp-title">Account Executive</div></div></div></td>
+              <td><span class="pill not-enrolled">Not Enrolled</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct" style="color:var(--text-muted);">—</span></div></td>
+              <td>—</td>
+              <td style="color:var(--text-muted);">—</td>
+              <td style="color:var(--text-muted);">Eligible 10/1/2023</td>
+            </tr>
+            <tr>
+              <td><div class="emp-cell"><div class="emp-init" style="background:#9CA3AF;">RA</div><div><div class="emp-full-name">Ryan Adams</div><div class="emp-title">Sales Rep</div></div></div></td>
+              <td><span class="pill pending">Pending</span></td>
+              <td><div class="deferral-cell"><span class="deferral-pct" style="color:var(--text-muted);">—</span></div></td>
+              <td>—</td>
+              <td style="color:var(--text-muted);">—</td>
+              <td style="color:var(--text-muted);">Eligible 1/15/2026</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="padding:12px 20px;border-top:1px solid var(--border-light);font-size:13px;color:var(--text-muted);display:flex;justify-content:space-between;">
+          <span>Showing 12 of 47 employees</span>
+          <span style="color:#0B4FD1;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">View all employees <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+        </div>
+      </div>
+    </div><!-- /employees tab -->
+
+
+    <!-- ══════════════════════════════════
+         CONTRIBUTIONS TAB
+    ══════════════════════════════════ -->
+    <div id="contributions" class="tab-panel">
+      <div class="contrib-summary-grid">
+        <div class="contrib-summary-card">
+          <div class="card-lbl">2026 YTD Employee Contributions</div>
+          <div class="card-val">$32,480</div>
+          <div class="card-sub">Through Feb 28, 2026 · <span>↑ 8% vs. same period last year</span></div>
+        </div>
+        <div class="contrib-summary-card">
+          <div class="card-lbl">2026 YTD Employer Match</div>
+          <div class="card-val">$12,992</div>
+          <div class="card-sub">Safe Harbor · 100% match up to 4%</div>
+        </div>
+        <div class="contrib-summary-card">
+          <div class="card-lbl">2025 Annual Total</div>
+          <div class="card-val">$260,960</div>
+          <div class="card-sub">$186,400 employee · $74,560 employer</div>
+        </div>
+        <div class="contrib-summary-card">
+          <div class="card-lbl">2026 IRS Limit Remaining</div>
+          <div class="card-val">$20,019</div>
+          <div class="card-sub">Avg per employee · Limit: $23,500 / $31,000 50+</div>
+        </div>
+      </div>
+      <div class="monthly-table-wrap">
+        <div style="padding:14px 20px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;">
+          <h3 style="font-size:14px;font-weight:700;color:var(--text-dark);">Contribution History</h3>
+          <button class="btn-sm outlined">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CSV
+          </button>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Pay Date</th>
+              <th>Employee Contributions</th>
+              <th>Employer Match</th>
+              <th>Total</th>
+              <th>Participants</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600;">Feb 15, 2026</td>
+              <td>$16,240</td>
+              <td>$6,496</td>
+              <td><strong>$21,746</strong></td>
+              <td>34</td>
+              <td><span class="pill enrolled">Processed</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Jan 31, 2026</td>
+              <td>$16,240</td>
+              <td>$6,496</td>
+              <td><strong>$21,746</strong></td>
+              <td>33</td>
+              <td><span class="pill enrolled">Processed</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;color:var(--text-muted);">Dec 31, 2025</td>
+              <td style="color:var(--text-muted);">$15,533</td>
+              <td style="color:var(--text-muted);">$6,213</td>
+              <td style="color:var(--text-muted);"><strong>$20,747</strong></td>
+              <td style="color:var(--text-muted);">33</td>
+              <td><span class="pill enrolled">Processed</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;color:var(--text-muted);">Nov 30, 2025</td>
+              <td style="color:var(--text-muted);">$15,533</td>
+              <td style="color:var(--text-muted);">$6,213</td>
+              <td style="color:var(--text-muted);"><strong>$20,747</strong></td>
+              <td style="color:var(--text-muted);">33</td>
+              <td><span class="pill enrolled">Processed</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;color:var(--text-muted);">Oct 31, 2025</td>
+              <td style="color:var(--text-muted);">$15,533</td>
+              <td style="color:var(--text-muted);">$6,213</td>
+              <td style="color:var(--text-muted);"><strong>$20,747</strong></td>
+              <td style="color:var(--text-muted);">32</td>
+              <td><span class="pill enrolled">Processed</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="padding:12px 20px;border-top:1px solid var(--border-light);font-size:13px;color:var(--text-muted);display:flex;justify-content:space-between;">
+          <span>Showing 5 of 38 pay dates</span>
+          <span style="color:var(--hi-green);font-weight:600;cursor:pointer;">View full history →</span>
+        </div>
+      </div>
+    </div><!-- /contributions tab -->
+
+
+    <!-- ══════════════════════════════════
+         INVESTMENTS TAB
+    ══════════════════════════════════ -->
+    <div id="investments" class="tab-panel">
+      <div class="investments-header">
+
+        <!-- Donut chart + breakdown -->
+        <div class="invest-overview">
+          <div style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">Total Invested Balance</div>
+          <div class="invest-total">$2,847,392</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Current Breakdown</div>
+          <div class="donut-wrap">
+            <!-- SVG donut chart: circumference = 2π×60 ≈ 376.99 -->
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <!-- Background ring -->
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#E4E3E0" stroke-width="18"/>
+              <!-- U.S. Equity 44% — BambooHR dark green -->
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#11743C" stroke-width="18"
+                stroke-dasharray="165.9 211.1" stroke-dashoffset="94.3" transform="rotate(-90 60 60)"/>
+              <!-- International 18% — medium green -->
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#74B856" stroke-width="18"
+                stroke-dasharray="67.9 309.1" stroke-dashoffset="-71.6" transform="rotate(-90 60 60)"/>
+              <!-- Fixed Income 28% — light green -->
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#A3D87A" stroke-width="18"
+                stroke-dasharray="105.6 271.4" stroke-dashoffset="-139.5" transform="rotate(-90 60 60)"/>
+              <!-- Money Market 10% — warm amber accent -->
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#F0893A" stroke-width="18"
+                stroke-dasharray="37.7 339.3" stroke-dashoffset="-245.1" transform="rotate(-90 60 60)"/>
+            </svg>
+            <div class="invest-legend">
+              <div class="invest-legend-item">
+                <div class="invest-legend-dot" style="background:#11743C;"></div>
+                <span class="invest-legend-name">U.S. Equity</span>
+                <span class="invest-legend-pct">44%</span>
+              </div>
+              <div class="invest-legend-item">
+                <div class="invest-legend-dot" style="background:#74B856;"></div>
+                <span class="invest-legend-name">Intl. Equity</span>
+                <span class="invest-legend-pct">18%</span>
+              </div>
+              <div class="invest-legend-item">
+                <div class="invest-legend-dot" style="background:#A3D87A;"></div>
+                <span class="invest-legend-name">Fixed Income</span>
+                <span class="invest-legend-pct">28%</span>
+              </div>
+              <div class="invest-legend-item">
+                <div class="invest-legend-dot" style="background:#F0893A;"></div>
+                <span class="invest-legend-name">Money Market</span>
+                <span class="invest-legend-pct">10%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fund table -->
+        <div class="fund-table-wrap">
+          <div class="fund-table-header">
+            <h3>Funds in Plan</h3>
+            <button class="btn-ghost">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/></svg>
+              Download CSV
+            </button>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Ticker</th>
+                <th>Fund Name</th>
+                <th>Asset Class</th>
+                <th>Participants</th>
+                <th>Assets in Fund</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-family:monospace;font-weight:700;color:var(--hi-navy);">VTSAX</td>
+                <td>Vanguard Total Stock Market Index Admiral</td>
+                <td style="color:var(--text-muted);">U.S. Equity</td>
+                <td>28</td>
+                <td><strong>$712,844</strong></td>
+              </tr>
+              <tr>
+                <td style="font-family:monospace;font-weight:700;color:var(--hi-navy);">VFIAX</td>
+                <td>Vanguard 500 Index Fund Admiral</td>
+                <td style="color:var(--text-muted);">U.S. Equity</td>
+                <td>22</td>
+                <td><strong>$539,142</strong></td>
+              </tr>
+              <tr>
+                <td style="font-family:monospace;font-weight:700;color:var(--hi-navy);">VTIAX</td>
+                <td>Vanguard Total International Stock Index Admiral</td>
+                <td style="color:var(--text-muted);">Intl. Equity</td>
+                <td>18</td>
+                <td><strong>$512,531</strong></td>
+              </tr>
+              <tr>
+                <td style="font-family:monospace;font-weight:700;color:var(--hi-navy);">VBTLX</td>
+                <td>Vanguard Total Bond Market Index Admiral</td>
+                <td style="color:var(--text-muted);">Fixed Income</td>
+                <td>21</td>
+                <td><strong>$484,057</strong></td>
+              </tr>
+              <tr>
+                <td style="font-family:monospace;font-weight:700;color:var(--hi-navy);">VTABX</td>
+                <td>Vanguard Total Intl Bond Index Admiral</td>
+                <td style="color:var(--text-muted);">Fixed Income</td>
+                <td>12</td>
+                <td><strong>$313,213</strong></td>
+              </tr>
+              <tr>
+                <td style="font-family:monospace;font-weight:700;color:var(--hi-navy);">VMMXX</td>
+                <td>Vanguard Prime Money Market Fund</td>
+                <td style="color:var(--text-muted);">Money Market</td>
+                <td>9</td>
+                <td><strong>$284,605</strong></td>
+              </tr>
+              <tr>
+                <td style="font-family:monospace;font-weight:700;color:var(--hi-navy);">VSCIX</td>
+                <td>Vanguard Small-Cap Index Admiral</td>
+                <td style="color:var(--text-muted);">U.S. Equity</td>
+                <td>8</td>
+                <td><strong>$201,052</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- /investments-header -->
+    </div><!-- /investments tab -->
+
+
+    <!-- ══════════════════════════════════
+         COMPLIANCE TAB
+    ══════════════════════════════════ -->
+    <div id="compliance" class="tab-panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div>
+          <h3 style="font-size:16px;font-weight:700;color:var(--text-dark);">Compliance Testing — Plan Year 2025</h3>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:4px;">All tests completed · No corrective actions required</p>
+        </div>
+        <button class="btn-outlined">Download Compliance Report</button>
+      </div>
+      <div class="compliance-grid">
+        <div class="compliance-card">
+          <div class="compliance-card-header">
+            ADP Test (Average Deferral Percentage)
+            <span class="compliance-result pass">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              PASS
+            </span>
+          </div>
+          <div class="compliance-detail">
+            Tests whether highly-compensated employees (HCEs) defer at a rate proportional to non-HCEs.
+            Your plan passed with an HCE avg deferral of <strong>7.4%</strong> vs. NHCE avg of <strong>5.8%</strong>.
+          </div>
+        </div>
+        <div class="compliance-card">
+          <div class="compliance-card-header">
+            ACP Test (Average Contribution Percentage)
+            <span class="compliance-result pass">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              PASS
+            </span>
+          </div>
+          <div class="compliance-detail">
+            Tests whether employer matching contributions are proportional between HCEs and NHCEs.
+            Safe Harbor plan design satisfies ACP testing requirements automatically.
+          </div>
+        </div>
+        <div class="compliance-card">
+          <div class="compliance-card-header">
+            Top-Heavy Test
+            <span class="compliance-result pass">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              NOT TOP-HEAVY
+            </span>
+          </div>
+          <div class="compliance-detail">
+            Key employees hold <strong>58.2%</strong> of total plan assets — below the 60% threshold.
+            No additional employer contributions required.
+          </div>
+        </div>
+        <div class="compliance-card">
+          <div class="compliance-card-header">
+            Form 5500 Annual Filing
+            <span class="compliance-result pending">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+              DUE JUL 31, 2026
+            </span>
+          </div>
+          <div class="compliance-detail">
+            Annual return/report for the 2025 plan year. Human Interest will prepare and file on your behalf.
+            Deadline: July 31, 2026 (or October 15, 2026 with extension).
+          </div>
+        </div>
+        <div class="compliance-card">
+          <div class="compliance-card-header">
+            Independent Audit Requirement
+            <span class="compliance-result not-required">NOT REQUIRED</span>
+          </div>
+          <div class="compliance-detail">
+            Plans with fewer than 100 participants at the start of the plan year are not required to have an independent audit.
+            Your plan had <strong>32</strong> participants on January 1, 2025.
+          </div>
+        </div>
+        <div class="compliance-card">
+          <div class="compliance-card-header">
+            Fidelity Bond
+            <span class="compliance-result pass">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              CURRENT
+            </span>
+          </div>
+          <div class="compliance-detail">
+            ERISA fidelity bond covers plan assets against fraud and dishonesty.
+            Current coverage: <strong>$285,000</strong> · Expires <strong>December 31, 2026</strong>.
+          </div>
+        </div>
+      </div>
+    </div><!-- /compliance tab -->
+
+
+    <!-- ══════════════════════════════════
+         REPORTS TAB
+    ══════════════════════════════════ -->
+    <div id="reports" class="tab-panel">
+      <div style="margin-bottom:16px;">
+        <h3 style="font-size:16px;font-weight:700;color:var(--text-dark);">Reports &amp; Documents</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:4px;">Download plan reports, participant data, and regulatory filings</p>
+      </div>
+      <div class="reports-grid">
+        <div class="report-item">
+          <div class="report-left">
+            <div class="report-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#529B2B" stroke-width="1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+            </div>
+            <div>
+              <div class="report-name">Contribution Summary Report</div>
+              <div class="report-desc">All contributions by employee and pay date · Updated Feb 28, 2026</div>
+            </div>
+          </div>
+          <div class="report-actions">
+            <button class="btn-sm outlined">Preview</button>
+            <button class="btn-sm primary">Download</button>
+          </div>
+        </div>
+        <div class="report-item">
+          <div class="report-left">
+            <div class="report-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#11743C" stroke-width="1.75"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <div class="report-name">Participant Census</div>
+              <div class="report-desc">Employee eligibility, enrollment status, and deferral rates · 47 employees</div>
+            </div>
+          </div>
+          <div class="report-actions">
+            <button class="btn-sm outlined">Preview</button>
+            <button class="btn-sm primary">Download</button>
+          </div>
+        </div>
+        <div class="report-item">
+          <div class="report-left">
+            <div class="report-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#74B856" stroke-width="1.75"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+            </div>
+            <div>
+              <div class="report-name">Investment Performance Report</div>
+              <div class="report-desc">Fund-level performance, expense ratios, and benchmarks · As of Dec 31, 2025</div>
+            </div>
+          </div>
+          <div class="report-actions">
+            <button class="btn-sm outlined">Preview</button>
+            <button class="btn-sm primary">Download</button>
+          </div>
+        </div>
+        <div class="report-item">
+          <div class="report-left">
+            <div class="report-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.75"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+            </div>
+            <div>
+              <div class="report-name">Form 5500 (Draft)</div>
+              <div class="report-desc">Annual return for plan year 2025 · Filing due July 31, 2026</div>
+            </div>
+          </div>
+          <div class="report-actions">
+            <span style="font-size:12px;color:var(--text-muted);margin-right:8px;">Available Jun 2026</span>
+            <button class="btn-sm outlined" style="opacity:0.5;cursor:not-allowed;">Download</button>
+          </div>
+        </div>
+        <div class="report-item">
+          <div class="report-left">
+            <div class="report-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#529B2B" stroke-width="1.75"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="report-name">Annual Compliance Test Results</div>
+              <div class="report-desc">ADP/ACP test results and top-heavy determination · Plan year 2025</div>
+            </div>
+          </div>
+          <div class="report-actions">
+            <button class="btn-sm outlined">Preview</button>
+            <button class="btn-sm primary">Download</button>
+          </div>
+        </div>
+        <div class="report-item">
+          <div class="report-left">
+            <div class="report-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.75"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+            </div>
+            <div>
+              <div class="report-name">Summary Plan Description (SPD)</div>
+              <div class="report-desc">Plan document describing benefits, eligibility, and participant rights</div>
+            </div>
+          </div>
+          <div class="report-actions">
+            <button class="btn-sm outlined">Preview</button>
+            <button class="btn-sm primary">Download</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- /reports tab -->
+
+  </div><!-- /content-area -->
+</div><!-- /main-wrapper -->
+
+<script>
+function showTab(tabId, el) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  if (el) el.classList.add('active');
+}
+</script>
+</body>
+</html>
